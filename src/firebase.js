@@ -1,13 +1,12 @@
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDuGnzHX4-GyzWnIU6cJM6s4phXPhIP1-k",
-  authDomain: "url-shortner-b526b.firebaseapp.com",
-  projectId: "url-shortner-b526b",
-  storageBucket: "url-shortner-b526b.appspot.com",
-  messagingSenderId: "448371411623",
-  appId: "1:448371411623:web:23b21e619b22663e5ba982",
-  databaseURL:"https://url-shortner-b526b-default-rtdb.firebaseio.com/"
+  apiKey:import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
 };
 
 // Initialize Firebase
