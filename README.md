@@ -2,6 +2,9 @@
 
 ShortLinkify is a URL shortener web application built using React, Tailwind CSS, and Firebase. Users can log in with their Google accounts, generate shortened URLs, and track the number of clicks on each URL.
 
+## Demo Video
+https://youtu.be/NnOnRM5hEtE
+
 ## Features
 - **Google Authentication:** Users can log in securely using their Google accounts.
 - **URL Shortening:** Generate short URLs for long links.
