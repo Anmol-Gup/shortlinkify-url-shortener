@@ -2,7 +2,7 @@ import Header from "./Header"
 import Footer from "./Footer"
 import { Navigate } from 'react-router-dom'
 import { app } from "../firebase";
-import { collection, query, where, getFirestore, onSnapshot} from "firebase/firestore";
+import { collection, query, where, getFirestore, onSnapshot, orderBy} from "firebase/firestore";
 import { useEffect, useState } from "react";
 import UrlList from "./UrlList";
 import Loader from "./Loader";
@@ -24,7 +24,7 @@ const MyUrls = ({ user }) => {
         try {
             const db = getFirestore(app)
             const docRef = collection(db, 'urls')
-            const q = query(docRef, where('uid', '==', uid))
+            const q = query(docRef, where('uid', '==', uid),orderBy('createdAt', 'asc'))
             
             // onSnapshot method from Firebase Firestore to listen for real-time updates to a Firestore query
             const unsubscribe = onSnapshot(q, (querySnapshot) => {

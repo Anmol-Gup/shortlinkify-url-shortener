@@ -1,5 +1,5 @@
 import Url from "./Url";
-import { collection, getDocs, query, where, getFirestore, doc, increment, updateDoc, deleteDoc } from "firebase/firestore";
+import { collection, getDocs, query, where, getFirestore, doc, updateDoc, deleteDoc } from "firebase/firestore";
 import { app } from '../firebase'
 
 const UrlList = ({ urls }) => {
@@ -18,17 +18,6 @@ const UrlList = ({ urls }) => {
             return
     }
 
-    const totalClicks = async (id) => {
-        try {
-            const db = getFirestore(app)
-            const q = query(collection(db, 'urls'), where('shortId', '==', id))
-            const querySnapshot = await getDocs(q)
-            await updateDoc(querySnapshot.docs[0].ref, { clicks: increment(1) });
-        }
-        catch (error) {
-            console.log(error.message)
-        }
-    }
     return (urls.length === 0 ? <section className="flex-grow grid place-items-center">
         <img src="no-data.svg" alt="no data" className="w-96" />
     </section> : <section className="flex-grow container mx-auto mt-6 px-4 py-3">
@@ -56,7 +45,7 @@ const UrlList = ({ urls }) => {
                         urls.map((doc, index) => {
                             // const { shortId, url, clicks } = doc.data()
                             const { shortId, url, clicks } = doc
-                            return (<Url key={index + 1} statistics={() => totalClicks(shortId)} shortId={shortId} url={url} clicks={clicks} remove={() => removeUrl(doc.id)} />)
+                            return (<Url key={index + 1} shortId={shortId} url={url} clicks={clicks} remove={() => removeUrl(doc.id)} />)
                         })
                     }
                 </tbody>
